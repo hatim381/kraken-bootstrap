@@ -1,0 +1,3 @@
+- Cache : j'ai copié `requirements.txt` et installé les dépendances avant de copier le code. Quand je modifie `app/main.py`, `pip install` n'est pas refait (CACHED), donc le build est plus rapide.
+- Taille : j'ai pris l'image `python:3.12-slim` (plus légère) et ajouté un `.dockerignore` pour ne pas envoyer `.venv` et `.git`. L'image passe de 700 Mo à 139 Mo de contenu (2.68 Go à 602 Mo sur le disque).
+- Sécurité et config : le job tourne avec un utilisateur normal (`app`, uid 1000) et pas en root. Le dossier de sortie se choisit avec `-e OUTPUT_DIR=...` et `-v`, sans changer l'image.
